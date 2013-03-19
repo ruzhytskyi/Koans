@@ -1,0 +1,6 @@
+1. About generators (assigning yield to variable)
+2. Avout generators (why use send())
+3. About classes (raising error if making self.Dog5) - about_classes.py(107)
+4. About new style classes - line 58: why instance has attribute __class__, but dir(instance) doesn't show it.
+5. About monkey patching - line 24: we def method with 'self' of class different form Dogs self??
+6. About method binding - line 73: not very clear about this method.
