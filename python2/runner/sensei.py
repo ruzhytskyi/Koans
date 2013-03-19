@@ -112,7 +112,7 @@ class Sensei(MockableTestResult):
         self.stream.writeln("")
         self.stream.writeln("{0}{1}Please meditate on the following code:" \
             .format(Fore.RESET, Style.NORMAL))
-        self.stream.writeln("{0}{1}{2}{3}{4}".format(Fore.YELLOW, Style.BRIGHT, \
+        self.stream.writeln("{0}{1}{2}{3}{4}".format(Fore.BLUE, Style.NORMAL, \
             self.scrapeInterestingStackDump(err), Fore.RESET, Style.NORMAL))
 
     def scrapeAssertionError(self, err):
