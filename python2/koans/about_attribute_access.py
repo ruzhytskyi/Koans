@@ -19,8 +19,8 @@ class AboutAttributeAccess(Koan):
         try:
             typical.foobar()
         except Exception as exception:
-            self.assertEqual(__, type(exception).__name__)
-            self.assertMatch(__, exception[0])
+            self.assertEqual('AttributeError', type(exception).__name__)
+            self.assertMatch("'TypicalObject' object has no attribute 'foobar'", exception[0])
 
     def test_calling_getattribute_causes_an_attribute_error(self):
         typical = self.TypicalObject()
@@ -28,7 +28,7 @@ class AboutAttributeAccess(Koan):
         try:
             typical.__getattribute__('foobar')
         except AttributeError as exception:
-            self.assertMatch(__, exception[0])
+            self.assertMatch("'TypicalObject' object has no attribute 'foobar'", exception[0])
 
         # THINK ABOUT IT:
         #
@@ -45,17 +45,17 @@ class AboutAttributeAccess(Koan):
     def test_all_attribute_reads_are_caught(self):
         catcher = self.CatchAllAttributeReads()
 
-        self.assertMatch(__, catcher.foobar)
+        self.assertMatch("Someone called 'foobar' and it could not be found", catcher.foobar)
 
     def test_intercepting_return_values_can_disrupt_the_call_chain(self):
         catcher = self.CatchAllAttributeReads()
 
-        self.assertMatch(__, catcher.foobaz)  # This is fine
+        self.assertMatch("Someone called 'foobaz' and it could not be found", catcher.foobaz)  # This is fine
 
         try:
             catcher.foobaz(1)
         except TypeError as ex:
-            self.assertMatch(__, ex[0])
+            self.assertMatch("'str' object is not callable", ex[0])
 
         # foobaz returns a string. What happens to the '(1)' part?
         # Try entering this into a python console to reproduce the issue:
@@ -66,7 +66,7 @@ class AboutAttributeAccess(Koan):
     def test_changing_getattribute_will_affect__the_getattr_function(self):
         catcher = self.CatchAllAttributeReads()
 
-        self.assertMatch(__, getattr(catcher, 'any_attribute'))
+        self.assertMatch("Someone called 'any_attribute' and it could not be found", getattr(catcher, 'any_attribute'))
 
     # ------------------------------------------------------------------
 

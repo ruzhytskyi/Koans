@@ -4,3 +4,6 @@
 4. About new style classes - line 58: why instance has attribute __class__, but dir(instance) doesn't show it.
 5. About monkey patching - line 24: we def method with 'self' of class different form Dogs self??
 6. About method binding - line 73: not very clear about this method.
+7. Read and meditate more about python MRO
+8. Check what 'type' builtin returns.
+9. Read more about @classmethod (why it is shadowed by instance method when an instance is created and why)
